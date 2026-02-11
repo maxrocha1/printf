@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmacari- <mmacari-@student.42luxembourg    +#+  +:+       +#+        */
+/*   By: maxrocha <maxrocha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:42:24 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/10 16:56:36 by mmacari-         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:51:37 by maxrocha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
-#include "libft.h"
+#include "ft_printf.h"
 
 void handle_format(char spec, va_list args, int *len)
 {
@@ -28,6 +28,11 @@ void handle_format(char spec, va_list args, int *len)
 		*len += print_hex(va_arg(args, unsigned int), spec);
 	else if (spec == 'p')
 		*len += print_pointer(va_arg(args, void *));
+	else if (spec == 'u')
+	{
+		unsigned int n = va_arg(args, unsigned int);
+		*len += print_unsigned(n);
+	}
 }
 int	ft_printf(const char *format, ...)
 {

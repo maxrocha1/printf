@@ -6,7 +6,7 @@
 /*   By: maxrocha <maxrocha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 17:09:25 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/11 16:14:57 by maxrocha         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:45:37 by maxrocha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	print_pointer(void *ptr)
 	int len;
 	unsigned long n;
 
+	if (!ptr)
+		return write(1, "(nil)", 5);
 	len = 0;
 	len += write(1, "0x", 2);
-	if (!ptr)
-		return len + write(1, "0", 1);
 	n = (unsigned long)ptr;
 	len += ft_putptr_hex(n);
 	return len;

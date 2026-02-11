@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmacari- <mmacari-@student.42luxembourg    +#+  +:+       +#+        */
+/*   By: maxrocha <maxrocha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:58:53 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/06 16:34:24 by mmacari-         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:42:46 by maxrocha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	print_percent(void)
 {
