@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   print_unsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacari- <mmacari-@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 17:02:01 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/06 17:41:45 by mmacari-         ###   ########.fr       */
+/*   Created: 2026/02/04 18:42:31 by mmacari-          #+#    #+#             */
+/*   Updated: 2026/02/04 18:48:39 by mmacari-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,16 @@ static size_t	convert_int_to_buffer(unsigned int n, char *buffer)
 	return (i);
 }
 
-int	print_number(int n)
+int	print_unsigned(unsigned int n)
 {
-	size_t			len;
-	char			buffer[12];
-	unsigned int	n_abs;
-	size_t			i;
+	size_t	len;
+	char	buffer[12];
+	size_t	i;
 
 	len = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		len++;
-		n_abs = -n;
-	}
-	else
-		n_abs = n;
-	i = convert_int_to_buffer(n_abs, buffer);
+	i = convert_int_to_buffer(n, buffer);
 	while (i > 0)
 	{
 		write(1, &buffer[i - 1], 1);

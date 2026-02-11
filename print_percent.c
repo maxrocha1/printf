@@ -6,7 +6,7 @@
 /*   By: mmacari- <mmacari-@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:58:53 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/03 17:01:33 by mmacari-         ###   ########.fr       */
+/*   Updated: 2026/02/06 16:34:24 by mmacari-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	print_percent(void)
 {
-	write(1, "%", 1);
-	return (1);
+	return (print_char('%'));
 }
