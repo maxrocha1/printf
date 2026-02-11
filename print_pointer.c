@@ -3,57 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmacari- <mmacari-@student.42luxembourg    +#+  +:+       +#+        */
+/*   By: maxrocha <maxrocha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 17:09:25 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/10 16:41:45 by mmacari-         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:14:57 by maxrocha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static size_t	convert_ptr_to_hex(unsigned long n, char *buffer)
+static int	ft_putptr_hex(unsigned long n)
 {
-	size_t			i;
-	unsigned int	digit;
+	char	*hex;
+	int		len;
 
-	i = 0;
-	while (n > 0)
-	{
-		digit = n % 16;
-		if (digit < 10)
-			buffer[i] = '0' + digit;
-		else
-			buffer[i] = 'a' + (digit - 10);
-		n = n / 16;
-		i++;
-	}
-	return (i);
+	len = 0;
+	hex = "0123456789abcdef";
+	if (n >= 16)
+		len += ft_putptr_hex(n / 16);
+	len += write(1, &hex[n % 16], 1);
+	return len;
 }
 
 int	print_pointer(void *ptr)
 {
-	size_t			len;
-	char			buffer[17];
-	size_t			i;
-	unsigned long	n;
+	int len;
+	unsigned long n;
 
 	len = 0;
-	i = 0;
-	write(1, "0x", 2);
-	len += 2;
+	len += write(1, "0x", 2);
 	if (!ptr)
-	{
-		write(1, "0", 1);
-		return (len + 1);
-	}
+		return len + write(1, "0", 1);
 	n = (unsigned long)ptr;
-	i = convert_ptr_to_hex(n, buffer);
-	while (i > 0)
-	{
-		write(1, &buffer[i - 1], 1);
-		len++;
-		i--;
-	}
-	return (len);
+	len += ft_putptr_hex(n);
+	return len;
 }
+
