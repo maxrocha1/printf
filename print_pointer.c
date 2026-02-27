@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxrocha <maxrocha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmacari- <mmacari-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 17:09:25 by mmacari-          #+#    #+#             */
-/*   Updated: 2026/02/11 16:45:37 by maxrocha         ###   ########.fr       */
+/*   Updated: 2026/02/23 10:14:24 by mmacari-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,19 @@ static int	ft_putptr_hex(unsigned long n)
 	if (n >= 16)
 		len += ft_putptr_hex(n / 16);
 	len += write(1, &hex[n % 16], 1);
-	return len;
+	return (len);
 }
 
 int	print_pointer(void *ptr)
 {
-	int len;
-	unsigned long n;
+	int				len;
+	unsigned long	n;
 
 	if (!ptr)
-		return write(1, "(nil)", 5);
+		return (write(1, "(nil)", 5));
 	len = 0;
 	len += write(1, "0x", 2);
 	n = (unsigned long)ptr;
 	len += ft_putptr_hex(n);
-	return len;
+	return (len);
 }
-
